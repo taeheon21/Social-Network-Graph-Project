@@ -22,19 +22,27 @@ class graph:
         else:
             print('Member does not exist')
 
-    def add_relationship(self, mem1, mem2): 
-        weight = random.randint(0, 10)
+ def add_relationship(self, mem1, mem2, weight=None):
+        """Add a relationship between two members."""
         if mem1 in self.graph and mem2 in self.graph:
-            i,j = self.graph [mem1], self.graph[mem2]
-            
-        else:
-            print ( "Both members must be initialized as objects to form a relationship")
-            
+            if weight is None:
+                weight = random.randint(1, 10)  # Assign a random weight if not provided
 
-    def remove_relation ( self, mem1, mem2):
+            # Update dictionary-based graph
+            self.graph[mem1]['friends'][mem2] = weight
+            if not self.directed:
+                self.graph[mem2]['friends'][mem1] = weight
+        else:
+            print("Both members must be added first")
+
+    def remove_relationship(self, mem1, mem2):
+        """Remove a relationship between two members."""
         if mem1 in self.graph and mem2 in self.graph:
-            i,j = self.graph [mem1], self.graph[mem2]
-                
+            self.graph[mem1]['friends'].pop(mem2, None)
+            if not self.directed:
+                self.graph[mem2]['friends'].pop(mem1, None)
+        else:
+            print("Both members must exist in the graph")
 
     def find_friends(self, member):
         if member in self.graph:

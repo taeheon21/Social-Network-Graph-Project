@@ -1,6 +1,10 @@
+import random
+import numpy as np
+
 class graph:
-    def __init__(self, directed = False):
+    def __init__(self,  size, directed = False):
         self.graph = {}
+        self.matrix = np.zeros ((size,size), dtype = int)
         self.directed = directed
         
     def add_member(self, member, age, interests):

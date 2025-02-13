@@ -66,10 +66,10 @@ class graph:
         suggestions = set()
 
         for friend in friends:
-            mutuals = set(self.find_mutual_friends(member, friend))
+            mutuals = set(self.find_friends(friend))
             suggestions.update(mutuals - friends - {member})
 
-        return suggestions
+        return list(suggestions)
 
     def shortest_path(self, member1, member2):
 
@@ -112,9 +112,12 @@ network = graph(size=10)
 # Add members
 network.add_member("Taeheon", 21, ["reading", "travelling"])
 network.add_member("Sultan", 22, ["sports", "music"])
+network.add_member("Alex", 19, ["physics", "coding"])
+network.add_member("Yaqin", 19, ["learning", "preying"])
 
 # Add relationships
-network.add_relationship("Taeheon", "Sultan")
+network.add_relationship("Taeheon", "Sultan", weight=5)
+network.add_relationship("Alex", "Sultan", weight=5)
 
 # Find direct friends of Taeheon
 print("Taeheon's friends:", network.find_friends("Taeheon"))
@@ -128,3 +131,6 @@ print("Shortest path between Taeheon and Sultan:", path, "with degrees of separa
 
 # Most connected members
 print("Most connected members:", network.most_connected())
+
+# Suggest friends for Alex
+print("Friend suggestions for Alex:", network.suggest_friends("Alex"))

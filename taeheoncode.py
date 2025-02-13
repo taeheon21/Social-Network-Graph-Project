@@ -22,12 +22,11 @@ class graph:
         else:
             print('Member does not exist')
 
-     def add_relations ( self, mem1, mem2): #add edges
+    def add_relationship(self, mem1, mem2): 
         weight = random.randint(0, 10)
         if mem1 in self.graph and mem2 in self.graph:
             i,j = self.graph [mem1], self.graph[mem2]
-            self.matrix [i][j] =weight
-            self.matrix [j][i] =weight
+            
         else:
             print ( "Both members must be initialized as objects to form a relationship")
             
@@ -35,8 +34,7 @@ class graph:
     def remove_relation ( self, mem1, mem2):
         if mem1 in self.graph and mem2 in self.graph:
             i,j = self.graph [mem1], self.graph[mem2]
-            self.matrix [i][j] =0
-            self.matrix [j][i] =0    
+                
 
     def find_friends(self, member):
         if member in self.graph:
@@ -87,7 +85,7 @@ class graph:
                     queue.append((neighbor, path + [neighbor]))
 
         return [], 0
-def most_connected(self):
+    def most_connected(self):
         biggest_weight = 0
         most_connected_member = None
 
@@ -98,6 +96,7 @@ def most_connected(self):
                 most_connected_member = member
 
         return most_connected_member, biggest_weight
+        
 
 # Example
 network = graph(size=10)
@@ -118,3 +117,6 @@ print("Mutual friends between Taeheon and Sultan:", network.find_mutual_friends(
 # Find shortest path between Taeheon and Sultan
 path, degrees = network.shortest_path("Taeheon", "Sultan")
 print("Shortest path between Taeheon and Sultan:", path, "with degrees of separation:", degrees)
+
+# Most connected members
+print("Most connected members:", network.most_connected())

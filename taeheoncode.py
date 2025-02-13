@@ -26,9 +26,9 @@ class graph:
         """Add a relationship between two members."""
         if mem1 in self.graph and mem2 in self.graph:
             if weight is None:
-                weight = random.randint(1, 10)  # Assign a random weight if not provided
+                weight = random.randint(1, 10)  
 
-            # Update dictionary-based graph
+           
             self.graph[mem1]['friends'][mem2] = weight
             if not self.directed:
                 self.graph[mem2]['friends'][mem1] = weight
@@ -55,9 +55,13 @@ class graph:
         if member1 not in self.graph or member2 not in self.graph:
             print('Member does not exist')
             return []
-        else:
-            return set(self.graph[member1]['friends'].keys()) & set(self.graph[member2]['friends'].keys())
-
+        
+        friends1 = set(self.graph[member1]['friends'].keys())
+        friends2 = set(self.graph[member2]['friends'].keys())
+        
+        mutual_friends = list(friends1 & friends2)
+        return mutual_friends
+    
     def suggest_friends(self, member):
         if member not in self.graph:
             return []
@@ -116,8 +120,10 @@ network.add_member("Alex", 19, ["physics", "coding"])
 network.add_member("Yaqin", 19, ["learning", "preying"])
 
 # Add relationships
-network.add_relationship("Taeheon", "Sultan", weight=5)
+network.add_relationship("Taeheon", "Sultan", weight=6)
 network.add_relationship("Alex", "Sultan", weight=5)
+network.add_relationship("Taeheon", "Yaqin", weight=5)
+network.add_relationship("Sultan", "Yaqin", weight=5)
 
 # Find direct friends of Taeheon
 print("Taeheon's friends:", network.find_friends("Taeheon"))

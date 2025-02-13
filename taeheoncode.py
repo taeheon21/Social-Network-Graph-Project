@@ -22,7 +22,7 @@ class graph:
         else:
             print('Member does not exist')
 
- def add_relationship(self, mem1, mem2, weight=None):
+    def add_relationship(self, mem1, mem2, weight=None):
         """Add a relationship between two members."""
         if mem1 in self.graph and mem2 in self.graph:
             if weight is None:

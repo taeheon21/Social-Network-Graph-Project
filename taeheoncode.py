@@ -22,22 +22,21 @@ class graph:
         else:
             print('Member does not exist')
 
-    def add_relationship(self, member1, member2, weight=1):
-        if member1 in self.graph and member2 in self.graph:
-            self.graph[member1]['friends'][member2] = weight
-            if not self.directed:
-                self.graph[member2]['friends'][member1] = weight
+     def add_relations ( self, mem1, mem2): #add edges
+        weight = random.randint(0, 10)
+        if mem1 in self.graph and mem2 in self.graph:
+            i,j = self.graph [mem1], self.graph[mem2]
+            self.matrix [i][j] =weight
+            self.matrix [j][i] =weight
         else:
-            print('One or both members do not exist')
+            print ( "Both members must be initialized as objects to form a relationship")
+            
 
-    def remove_relationship(self, member1, member2):
-        if member1 in self.graph and member2 in self.graph:
-            if member2 in self.graph[member1]['friends']:
-                del self.graph[member1]['friends'][member2]
-            if not self.directed and member1 in self.graph[member2]['friends']:
-                del self.graph[member2]['friends'][member1]
-        else:
-            print('One or both members do not exist')
+    def remove_relation ( self, mem1, mem2):
+        if mem1 in self.graph and mem2 in self.graph:
+            i,j = self.graph [mem1], self.graph[mem2]
+            self.matrix [i][j] =0
+            self.matrix [j][i] =0    
 
     def find_friends(self, member):
         if member in self.graph:

@@ -14,7 +14,14 @@ class graph:
             del self.graph[member]
         else:
             print('Member does not exist')
-            print("t")
+    
+    def addrelations ( self, mem1, mem2, weight =1): #add edges
+        if mem1 in self.graph and mem2 in self.graph:
+            i,j = self.graph [mem1], self.graph[mem2]
+            self.matrix [i][j] =weight
+            self.matrix [j][i] =weight
+        else:
+            print ( "Both members must be initialized as objects to form a relationship")
             
         
 

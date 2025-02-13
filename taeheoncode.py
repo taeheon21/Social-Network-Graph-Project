@@ -14,6 +14,7 @@ class graph:
             del self.graph[member]
         else:
             print('Member does not exist')
+            print("t")
             
         
 

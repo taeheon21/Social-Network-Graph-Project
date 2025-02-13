@@ -103,7 +103,7 @@ network.add_member("Taeheon", 21, ["reading", "travelling"])
 network.add_member("Sultan", 22, ["sports", "music"])
 
 # Add relationships
-network.add_relationship("Taeheon", "Sultan", weight=5)
+network.add_relationship("Taeheon", "Sultan")
 
 # Find direct friends of Taeheon
 print("Taeheon's friends:", network.find_friends("Taeheon"))

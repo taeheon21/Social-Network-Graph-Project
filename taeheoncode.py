@@ -19,7 +19,21 @@ class graph:
         else:
             print('Member does not exist')
             print("t")
-            
+    def addrelations ( self, mem1, mem2): #add edges
+        weight = random.randint(0, 10)
+        if mem1 in self.graph and mem2 in self.graph:
+            i,j = self.graph [mem1], self.graph[mem2]
+            self.matrix [i][j] =weight
+            self.matrix [j][i] =weight
+        else:
+            print ( "Both members must be initilised as objects to form a relationship")
+
+
+    def removerrelation ( self, mem1, mem2):
+        if mem1 in self.graph and mem2 in self.graph:
+            i,j = self.graph [mem1], self.graph[mem2]
+            self.matrix [i][j] =0
+            self.matrix [j][i] =0        
     
     def find_friends(self, memeber):
         if member in self.graph:

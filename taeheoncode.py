@@ -88,7 +88,13 @@ class graph:
                     queue.append((neighbor, path + [neighbor]))
 
         return [], 0
+def most_connected ( self):
+    biggest_weight = 0
+    for i in self.matrix :
+        if i> biggest_weight
+        biggest_weight = i
 
+    return biggest_weight
 
 # Example
 network = graph(size=10)

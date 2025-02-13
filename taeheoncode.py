@@ -87,13 +87,17 @@ class graph:
                     queue.append((neighbor, path + [neighbor]))
 
         return [], 0
-def most_connected ( self):
-    biggest_weight = 0
-    for i in self.matrix :
-        if i> biggest_weight
-        biggest_weight = i
+def most_connected(self):
+        biggest_weight = 0
+        most_connected_member = None
 
-    return biggest_weight
+        for member in self.graph:
+            total_weight = sum(self.graph[member]['friends'].values())
+            if total_weight > biggest_weight:
+                biggest_weight = total_weight
+                most_connected_member = member
+
+        return most_connected_member, biggest_weight
 
 # Example
 network = graph(size=10)

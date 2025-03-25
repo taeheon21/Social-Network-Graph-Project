@@ -139,4 +139,4 @@ print("Shortest path between Taeheon and Sultan:", path, "with degrees of separa
 print("Most connected members:", network.most_connected())
 
 # Suggest friends for Alex
-print("Friend suggestions for Alex:", network.suggest_friends("Alex"))
+print("Friend suggestions for Alex:", network.suggest_friends("Alexander")) #5676101
